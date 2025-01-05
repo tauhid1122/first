@@ -51,6 +51,15 @@
         .tool-card button:hover {
             background: #0056b3;
         }
+
+        #textInput {
+            width: 100%;
+            height: 100px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
     </style>
 </head>
 <body>
@@ -111,11 +120,13 @@
         function upperCase() {
             const text = document.getElementById('textInput').value;
             document.getElementById('textResult').textContent = text.toUpperCase();
+            document.getElementById('textInput').value = text.toUpperCase();
         }
 
         function lowerCase() {
             const text = document.getElementById('textInput').value;
             document.getElementById('textResult').textContent = text.toLowerCase();
+            document.getElementById('textInput').value = text.toLowerCase();
         }
 
         // Color generator function
