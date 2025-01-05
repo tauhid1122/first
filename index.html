@@ -3,22 +3,126 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tools Collection</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .tools-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .tool-card {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            background: #fff;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        .tool-card h3 {
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .tool-card button {
+            background: #007bff;
+            color: white;
+            border: none;
+            padding: 8px 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-top: 10px;
+        }
+
+        .tool-card button:hover {
+            background: #0056b3;
+        }
+    </style>
 </head>
 <body>
-    <h1>Welcome to my site</h1>
-    <ul>
-        <li>test11</li>
-        <li>test21</li>
-        <li>test31</li>
-    </ul>
-    <table>
-        <tr>
-            <td>tset1</td>
-            <td>tset2</td>
-            <td>tset3</td>
-            <td>tset4</td>
-        </tr>
-    </table>
+    <h1>Tools Collection</h1>
+    
+    <div class="tools-container">
+        <!-- Calculator Tool -->
+        <div class="tool-card">
+            <h3>Calculator</h3>
+            <input type="number" id="num1" placeholder="Number 1">
+            <input type="number" id="num2" placeholder="Number 2">
+            <select id="operation">
+                <option value="+">+</option>
+                <option value="-">-</option>
+                <option value="*">×</option>
+                <option value="/">÷</option>
+            </select>
+            <button onclick="calculate()">Calculate</button>
+            <p id="calcResult"></p>
+        </div>
+
+        <!-- Text Tool -->
+        <div class="tool-card">
+            <h3>Text Transformer</h3>
+            <textarea id="textInput" placeholder="Enter text here"></textarea>
+            <button onclick="upperCase()">UPPERCASE</button>
+            <button onclick="lowerCase()">lowercase</button>
+            <p mid="textResult"></p>
+        </div>
+
+        <!-- Color Generator -->
+        <div class="tool-card">
+            <h3>Random Color Generator</h3>
+            <div id="colorBox" style="height: 100px; border: 1px solid #ddd;"></div>
+            <button onclick="generateColor()">Generate Color</button>
+        </div>
+    </div>
+
+    <script>
+        // Calculator function
+        function calculate() {
+            const num1 = parseFloat(document.getElementById('num1').value);
+            const num2 = parseFloat(document.getElementById('num2').value);
+            const operation = document.getElementById('operation').value;
+            let result;
+
+            switch(operation) {
+                case '+': result = num1 + num2; break;
+                case '-': result = num1 - num2; break;
+                case '*': result = num1 * num2; break;
+                case '/': result = num1 / num2; break;
+            }
+
+            document.getElementById('calcResult').textContent = `Result: ${result}`;
+        }
+
+        // Text transformer functions
+        function upperCase() {
+            const text = document.getElementById('textInput').value;
+            document.getElementById('textResult').textContent = text.toUpperCase();
+        }
+
+        function lowerCase() {
+            const text = document.getElementById('textInput').value;
+            document.getElementById('textResult').textContent = text.toLowerCase();
+        }
+
+        // Color generator function
+        function generateColor() {
+            const randomColor = '#' + Math.floor(Math.random()*16777215).toString(16);
+            document.getElementById('colorBox').style.backgroundColor = randomColor;
+        }
+    </script>
 </body>
 </html>
